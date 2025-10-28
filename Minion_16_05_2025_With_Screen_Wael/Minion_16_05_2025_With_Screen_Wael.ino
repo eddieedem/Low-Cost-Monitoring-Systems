@@ -64,10 +64,7 @@ void setup()
   
 
   Wire.begin();// Initialize I2C commmunication 
-  if (!sht4.begin()) {
-    Serial.println("Couldn't find SHT4x sensor!");
-    while (1) delay(10);
-  }
+
 
   Serial.println("SHT4x sensor initialized.");
   
@@ -79,6 +76,13 @@ void setup()
   oled.println("");            // Set cursor to top-left
   oled.println(" MonksHill");       // First line
   oled.println("    Lab");          // Second line
+  oled.clear();
+  
+  if (!sht4.begin()) {
+  Serial.println("Couldn't find SHT4x sensor!");
+  oled.println(" NO SHT41");
+  while (1) delay(10);
+}
   delay(1000);
 }
 
